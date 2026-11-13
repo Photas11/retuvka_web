@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0D5EB2">
+    <meta name="description" content="Ukázková administrace webu obce Řetůvka.">
+    <title>Administrace — Obec Řetůvka</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">Přejít na obsah administrace</a>
+    <div class="admin-shell">
+      <aside class="sidebar" id="admin-sidebar">
+        <a class="admin-brand" href="index.html" aria-label="Obec Řetůvka — veřejný web">
+          <img class="admin-logo" src="assets/retuvka-logo.png" alt="Obec Řetůvka">
+        </a>
+        <div class="sidebar-label">HLAVNÍ MENU</div>
+        <nav class="sidebar-nav" aria-label="Administrace">
+          <button type="button" class="nav-item is-active" data-view="dashboard"><span class="nav-icon">⌂</span><span>Přehled</span></button>
+          <button type="button" class="nav-item" data-view="news"><span class="nav-icon">▤</span><span>Aktuality</span><span class="nav-count" id="news-count"></span></button>
+          <button type="button" class="nav-item" data-view="events"><span class="nav-icon">▦</span><span>Události</span></button>
+          <button type="button" class="nav-item" data-view="board"><span class="nav-icon">▧</span><span>Úřední deska</span><span class="nav-count nav-count-warn" id="board-count"></span></button>
+          <button type="button" class="nav-item" data-view="gallery"><span class="nav-icon">▧</span><span>Fotogalerie</span></button>
+          <button type="button" class="nav-item" data-view="pages"><span class="nav-icon">▣</span><span>Stránky</span></button>
+        </nav>
+        <div class="sidebar-label sidebar-label-bottom">SPRÁVA</div>
+        <nav class="sidebar-nav">
+          <button type="button" class="nav-item" data-view="settings"><span class="nav-icon">⚙</span><span>Kontakty a nastavení</span></button>
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-help">
+          <span class="help-icon" aria-hidden="true">?</span>
+          <strong>Potřebujete poradit?</strong>
+          <small>Prototyp administrace</small>
+        </div>
+        <a class="back-to-site" href="index.html"><span aria-hidden="true">↗</span> Zobrazit veřejný web</a>
+      </aside>
+
+      <div class="sidebar-scrim" id="sidebar-scrim"></div>
+      <div class="workspace">
+        <header class="admin-topbar">
+          <button type="button" class="mobile-menu" id="mobile-menu" aria-label="Otevřít navigaci" aria-expanded="false" aria-controls="admin-sidebar">☰</button>
+          <div class="breadcrumbs"><span>Řetůvka</span><span aria-hidden="true">/</span><strong id="breadcrumb-current">Přehled</strong></div>
+          <div class="topbar-actions">
+            <button type="button" class="button topbar-create" id="top-create"><span class="plus" aria-hidden="true">+</span> Nový obsah</button>
+            <span class="prototype-pill"><span></span> Prototyp · bez ukládání</span>
+            <label class="role-control"><span>Ukázková role</span>
+              <select id="role-switch" aria-label="Přepnout ukázkovou roli">
+                <option value="editor">Redaktor</option>
+                <option value="board">Správce úřední desky</option>
+                <option value="admin">Správce webu</option>
+              </select>
+            </label>
+            <button type="button" class="avatar-button" id="profile-button" aria-label="Ukázkový profil">R</button>
+          </div>
+        </header>
+
+        <main class="admin-main" id="admin-main">
+          <div class="prototype-notice">
+            <span class="notice-symbol" aria-hidden="true">i</span>
+            <p><strong>Ukázková administrace.</strong> Změny se ukládají jen dočasně v této stránce, po obnovení zmizí.</p>
+            <button type="button" id="dismiss-notice" aria-label="Skrýt upozornění">×</button>
+          </div>
+          <div id="view-root"></div>
+        </main>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <div><p class="eyebrow" id="modal-eyebrow">ÚPRAVA OBSAHU</p><h2 id="modal-title">Nový obsah</h2></div>
+          <button type="button" class="icon-button" id="modal-close" aria-label="Zavřít okno">×</button>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-footer" id="modal-footer"></div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
